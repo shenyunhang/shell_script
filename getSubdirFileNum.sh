@@ -22,9 +22,9 @@ done
 
 for f in *
 do
-	echo -n $f ": "
 	if [ -d ./"$f" ]
 	then
+		echo -n $f ": "
 		if ${QUICK}
 		then
 			ls -l ./"$f"  | wc -l 
