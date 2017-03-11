@@ -50,4 +50,4 @@ done
 #done
 
 #http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di
-find . -name "*.pyc" -type f -delete
+find . -name "*.${EXTENSION}" -type f -delete
