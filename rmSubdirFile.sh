@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#set -x
+
 #http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 # Use -gt 1 to consume two arguments per pass in the loop (e.g. each
 # argument has a corresponding value to go with it).
@@ -16,8 +18,8 @@ do
 			EXTENSION="$2"
 			shift # past argument
 			;;
-		-s|--searchpath)
-			SEARCHPATH="$2"
+		-s|--str)
+			STR="$2"
 			shift # past argument
 			;;
 		*)
@@ -27,9 +29,23 @@ do
 	shift # past argument or value
 done
 
+#http://stackoverflow.com/questions/3601515/how-to-check-if-a-variable-is-set-in-bash
+if [ -z ${STR+x} ] && [ -z ${EXTENSION+x} ]
+then
+	echo "-s|--str or -e|--extension is unset."
+	exit
+elif ! [ -z ${STR+x} ] && [ -z ${EXTENSION+x} ]
+then
+	find . -name "*${STR}*" -type f 
+elif [ -z ${STR+x} ] && ! [ -z ${EXTENSION+x} ]
+then
+	find . -name "*.${EXTENSION}" -type f 
+else 
+	find . -name "*${STR}*.${EXTENSION}" -type f 
+fi
 
 #http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di
-find . -name "*.${EXTENSION}" -type f 
+#find . -name "*.${EXTENSION}" -type f 
 
 #http://stackoverflow.com/questions/226703/how-do-i-prompt-for-yes-no-cancel-input-in-a-linux-shell-script
 while true; do
@@ -49,5 +65,15 @@ done
 #esac
 #done
 
-#http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di
-find . -name "*.${EXTENSION}" -type f -delete
+if [ -z ${STR+x} ] && [ -z ${EXTENSION+x} ]
+then
+	exit
+elif ! [ -z ${STR+x} ] && [ -z ${EXTENSION+x} ]
+then
+	find . -name "*${STR}*" -type f  -delete
+elif [ -z ${STR+x} ] && ! [ -z ${EXTENSION+x} ]
+then
+	find . -name "*.${EXTENSION}" -type f -delete
+else 
+	find . -name "*${STR}*.${EXTENSION}" -type f  -delete
+fi
