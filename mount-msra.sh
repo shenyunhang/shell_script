@@ -9,8 +9,11 @@
 remotes=("//7QLNBD2/d$/")
 mount_dirs=("7QLNBD2")
 
-BASEDIR=$(dirname "$0")
-cred_file="${BASEDIR}/credentials"
+pushd `dirname $0` > /dev/null
+SCRIPTPATH=`pwd -P`
+popd > /dev/null
+
+cred_file="${SCRIPTPATH}/credentials"
 length=${#remotes[*]}
 echo "${length} remotes need to mount or umount"
 
