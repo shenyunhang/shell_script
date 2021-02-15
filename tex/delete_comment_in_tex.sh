@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -x
+set -e
 
 find . -name "*.tex" -type f | xargs -I '{}' -n 1 sed -n -e '/^%/p' {}
 
