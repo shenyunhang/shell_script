@@ -1,11 +1,11 @@
 #!/bin/bash
 
-set -e
 set -x
+set -e
 
-perl uc.pl $1
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P  )"
 
-
+perl ${SCRIPTPATH}/uc.pl $1
 
 #https://www.stat.berkeley.edu/~paciorek/computingTips/Change_case_your_journal_ti.html
 #Change the case of your journal titles in a Bibtex datafile
@@ -15,3 +15,6 @@ perl uc.pl $1
 #perl uc.pl file
 #The perl code lc.pl takes file.bib, converts all journal titles to lower case, and overwrites it, but saves a copy to file.bib.save. It is invoked as
 #perl lc.pl file
+
+
+

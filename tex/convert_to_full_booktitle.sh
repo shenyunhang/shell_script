@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -x
+set -e
+
 #SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P  )"
 
 

@@ -18,13 +18,6 @@ delete.field = "editor"
 delete.field = "issn"
 delete.field = "pmid"
 
-# comment below for XMU thesis
-delete.field = "pages"
-delete.field = "volume"
-delete.field = "number"
-delete.field = "publisher"
-delete.field = "address"
-
 delete.field = "archiveprefix"
 delete.field = "arxivid"
 delete.field = "url"
@@ -32,3 +25,10 @@ delete.field = "eprint"
 
 preserve.keys = on
 preserve.key.case = on
+
+# comment below for XMU thesis
+delete.field = "pages"
+delete.field = "volume"
+delete.field = "number"
+delete.field = "publisher"
+delete.field = "address"
